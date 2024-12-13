@@ -5,7 +5,12 @@ const nextConfig: NextConfig = {
         return [
             {
                 source: '/',
-                destination: '/recommendations',
+                destination: '/home/recommendations',
+                permanent: true,
+            },
+            {
+                source: '/home',
+                destination: '/home/recommendations',
                 permanent: true,
             }
         ]

@@ -1,8 +1,8 @@
-import { getUser } from "@/utils/user-service"
+import { getUser } from "@/lib/user-service"
 
 const Recommendations = async () => {
     const user = await getUser();
-    console.log(user);
+    
     return (
         <div>Recommendations</div>
     )

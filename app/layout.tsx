@@ -1,4 +1,5 @@
 import "./globals.css";
+import MainApp from "./main-app";
 
 export default function RootLayout({
     children,
@@ -7,8 +8,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body>
-                {children}
+            <body className="bg-gray-50">
+                <MainApp>
+                    {children}
+                </MainApp>
             </body>
         </html>
     );
