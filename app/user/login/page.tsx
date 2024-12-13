@@ -5,38 +5,59 @@ import { useRouter } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { useForm } from "@tanstack/react-form";
 
 const Login = () => {
+    const form = useForm({
+        defaultValues: {
+            email: ""
+        },
+        onSubmit: ({ value }) => {
+            if (!value) return
+            console.log(value)
+            router.push('login/otp')
+        }
+    });
+
     const router = useRouter();
-    function handleClick() {
-
-        // const response = await fetch('/api/auth/login', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({ email, password }),
-        // })
-
-        // if (response.ok) {
-        //     router.push('/recommendations')
-        // } else {
-        //     // Handle errors
-        // }
-    }
 
     return (
         <div className="flex justify-center h-screen">
-            <Card className="w-[380px] m-auto">
+            <Card className="w-[400px] m-auto">
                 <CardHeader>
-                    <CardTitle>Login</CardTitle>
+                    <CardTitle className="text-xl">Login</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <div className="flex flex-col gap-4">
-                        <Label htmlFor="email">Email</Label>
-                        <Input type="text" name="email" />
-                    </div>
+                    <form className="flex flex-col gap-4" onSubmit={(e) => {
+                        e.preventDefault()
+                        e.stopPropagation()
+                    }}>
+                        <form.Field name="email"
+                            validators={{
+                                onChange: ({ value }: any) => {
+                                    if (!value) {
+                                        return "Email is required"
+                                    }
+                                }
+                            }}
+                            children={(field) => (
+                                <div className="flex flex-col gap-2">
+                                    <Label htmlFor="email" className="text-base">Email</Label>
+                                    <Input type="text" name="email" value={field.state.value} onChange={e => field.handleChange(e.target.value)} />
+
+                                    {field.state.meta.errors && (
+                                        <div className="text-red-500 text-sm">
+                                            {field.state.meta.errors}
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                        />
+                    </form>
+
                 </CardContent>
                 <CardFooter className="flex justify-end">
-                    <Button onClick={handleClick}>Next</Button>
+                    <Button onClick={form.handleSubmit}>Next</Button>
                 </CardFooter>
             </Card>
         </div>
