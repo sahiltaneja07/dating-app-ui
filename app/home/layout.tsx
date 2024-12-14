@@ -7,10 +7,10 @@ const HomeLayout = ({
     children: React.ReactNode;
 }>) => {
     return (
-        <div>
+        <>
             {children}
             <BottomNav />
-        </div>
+        </>
     )
 }
 
