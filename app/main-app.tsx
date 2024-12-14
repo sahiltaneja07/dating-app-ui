@@ -12,7 +12,7 @@ const MainApp = ({
 }>) => {
     return (
         <QueryClientProvider client={queryClient}>
-            <div className='container mx-auto p-4'>
+            <div className='main-container'>
                 {children}
             </div>
         </QueryClientProvider>
