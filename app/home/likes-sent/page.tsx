@@ -39,12 +39,13 @@ const LikesSent = () => {
                 <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white p-4 font-bold text-center">
                     Likes Sent
                 </div>
-                {users.map((user) => (
-                    <div key={user.userId}>
-                        <UsersList userData={user} />
-                        <hr />
-                    </div>
-                ))}
+
+                <div className="grid grid-cols-2 gap-3 mt-3 px-4">
+                    {users.map((user) => (
+                        <UsersList key={user.userId} userData={user} />
+                    ))}
+                </div>
+
             </div>
 
             <div className="w-3/4">
