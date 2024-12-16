@@ -22,8 +22,11 @@ const Recommendations = async () => {
                 data.map(x =>
                     <div className="flex h-full" key={x.userId}>
                         <div className="flex-auto w-1/3 border-r">
-                            <div className="w-full h-52 rounded-2xl mb-4">
-                                <img src={x.photos[0]} />
+                            <div className="w-full rounded-b-lg mb-4 h-80 bg-no-repeat bg-cover bg-center flex flex-col justify-end" style={{backgroundImage: `url(${x.photos[0]}), linear-gradient(#D3D3D3, #808080)`}}>
+                                <div className="font-sans text-sm text-white mb-3 ml-3 mr-3 font-bold">
+                                    <p>Marie 22</p>
+                                    <p>About me oiojsd jhksdh osah i jd ja soidj iosjioa jdaoisjdoias jdio jdfbhddo iajfoajhvd</p>
+                                </div>
                             </div>
                             <div className="flex justify-between ml-5 mr-5">
                                 <Button variant={"outline"}>
