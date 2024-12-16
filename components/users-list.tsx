@@ -1,40 +1,11 @@
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
+'use client'
 
-const UsersList = ({ userData }: any) => {
+const UsersList = ({ data, onCardClick }: any) => {
     return (
-        <Card>
-            <CardContent>
-                <div className="flex gap-4 items-center py-3 hover:bg-slate-200 hover:shadow-lg cursor-pointer">
-                    <img
-                        className="border rounded-full w-20 h-20"
-                        src={userData.photos[0]}
-                        alt="User image"
-                    />
-                    <div className="flex flex-col">
-                        <span className="font-bold">{userData.name}, {userData.age}</span>
-                        <span className="text-sm">{userData.location}</span>
-                    </div>
-                </div>
-            </CardContent>
-        </Card>
-        // <div className="flex gap-4 items-center py-3 hover:bg-slate-200 hover:shadow-lg cursor-pointer">
-        //     <img
-        //         className="border rounded-full w-20 h-20"
-        //         src={userData.photos[0]}
-        //         alt="User image"
-        //     />
-        //     <div className="flex flex-col">
-        //         <span className="font-bold">{userData.name}, {userData.age}</span>
-        //         <span className="text-sm">{userData.location}</span>
-        //     </div>
-        // </div>
+        <div className='flex items-end bg-cover bg-center bg-no-repeat px-4 py-3 rounded-xl hover:shadow-lg hover:shadow-slate-500 cursor-pointer h-36'
+            style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)),url(${data.photos[0]})` }} onClick={() => onCardClick(data)}>
+            <span className="text-white text-xs font-semibold">{data.name}, {data.age}</span>
+        </div>
     )
 }
 

@@ -1,5 +1,8 @@
+'use client'
+
+import UserDetails from "@/components/user-details";
 import UsersList from "@/components/users-list";
-import Image from "next/image"
+import { useState } from "react";
 
 const LikesSent = () => {
     const users =
@@ -32,26 +35,31 @@ const LikesSent = () => {
             photos: ['https://www.kasandbox.org/programming-images/avatars/primosaur-ultimate.png', 'https://www.kasandbox.org/programming-images/avatars/purple-pi-teal.png', 'https://pixabay.com/get/gb8a687d555ef22f4f3fcd920f9cefab6935ee9eb5a6da842537525027deb2464686875b31f8e1943f48d6949a936c0f34d406ae7f25c908d0d3cf5fa65a8c17f2079131715fca79ca908cd593019193e_640.jpg']
         }];
 
+    const [userDetails, setUserDetails] = useState(null)
+
+    function handleCardClick(userData: any) {
+        setUserDetails(userData)
+    }
 
     return (
         <div className="flex gap-4 min-h-screen" >
-            <div className="w-1/4 border-r">
+            <div className="w-1/3 border-r">
                 <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white p-4 font-bold text-center">
                     Likes Sent
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 mt-3 px-4">
+                <div className="grid grid-cols-3 gap-3 mt-3 px-4">
                     {users.map((user) => (
-                        <UsersList key={user.userId} userData={user} />
+                        <UsersList key={user.userId} data={user} onCardClick={handleCardClick} />
                     ))}
                 </div>
 
             </div>
 
-            <div className="w-3/4">
-                Side bar
+            <div className="w-2/3">
+                <UserDetails data={userDetails} />
             </div>
-        </div >
+        </div>
     )
 }
 
