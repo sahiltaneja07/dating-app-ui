@@ -11,28 +11,37 @@ const LikesSent = () => {
             name: 'XYZ Surname',
             location: 'Ostatnia 2D, Krakow',
             age: 30,
-            bio: 'Sare ga ma padha ni sa thus is my bios oiusjdio fkjoikj oikjas jkdfh  kjahk sjdfh kjashdf aksj fhjkshd fkjashdfjkhsjkdfh kj ajsk hs kdjk njksd nfjkas nvjkaf nvjakfd bnkajsdnkj snd',
-            gender: 'M',
+            bio: 'Part-time comedian, full-time foodie. I lift (pizza slices), binge-watch shows like its a sport, and never say no to road trips. Looking for someone to share laughs, adventures, and the last slice of pizza.',
+            gender: 'Male',
             interests: ['Walking', 'Badminton', 'Cycling'],
-            photos: ['https://www.kasandbox.org/programming-images/avatars/primosaur-ultimate.png', 'https://placebear.com/g/200/200', 'https://reactnative.dev/img/tiny_logo.png']
+            photos: ['https://picsum.photos/id/447/500.jpg', 'https://picsum.photos/id/453/500.jpg', 'https://picsum.photos/id/669/500.jpg'],
+            height: "5'9",
+            interestedIn: "Women",
+            birthdate:"18/07/1992"
         }, {
             userId: 2,
             name: 'ABC Surname',
             location: 'Oswiecenia 47, Warsaw',
             age: 29,
-            bio: 'Lorem ipsum so la ti do jksaddklas dlkjasd aflkj lkjs lkdsdfj alksjf sdklfjl kdsjf slkdjf slkdjf sldkjf lskdj flskdjf slkdf jsdlkf jsdlkf jsdlk fjsdlkj flksd jflks jdflk sjdflk jslks',
-            gender: 'F',
+            bio: 'Fluent in sarcasm, fueled by coffee, and always up for spontaneous adventures. Lover of sunsets, cozy nights, and bad puns. Let’s grab tacos and see if we vibe!',
+            gender: 'Female',
             interests: ['Walking', 'Nothing', 'Running'],
-            photos: ['https://www.kasandbox.org/programming-images/avatars/spunky-sam.png', 'https://www.kasandbox.org/programming-images/avatars/old-spice-man.png', 'https://pixabay.com/get/gb8a687d555ef22f4f3fcd920f9cefab6935ee9eb5a6da842537525027deb2464686875b31f8e1943f48d6949a936c0f34d406ae7f25c908d0d3cf5fa65a8c17f2079131715fca79ca908cd593019193e_640.jpg']
+            photos: ['https://picsum.photos/id/64/500.jpg', 'https://picsum.photos/id/325/500.jpg', 'https://picsum.photos/id/550/500.jpg', 'https://picsum.photos/id/646/500.jpg'],
+            height: "5'5",
+            interestedIn: "Men",
+            birthdate:"17/06/1995"
         }, {
             userId: 3,
             name: 'GHI Surname',
             location: 'Noida, India',
             age: 22,
-            bio: 'Ae ji Oj lo ji suno ji slkjdf lksdj flksdjf klsdj fklsdj fklsd jfkls djfklsd jflks jgklfd hlskdjf oapifpoafiopfigop sdifposd fiops idfops idfpipoi poi po iop ipo ip iuj poi',
-            gender: 'F',
+            bio: 'Part-time foodie, full-time meme enthusiast. I lift...pizza slices and occasionally weights. Big fan of road trips, good music, and bad jokes. Let’s laugh, explore, and see where this goes!',
+            gender: 'Female',
             interests: ['Dancing', 'Walking', 'Sleeping'],
-            photos: ['https://www.kasandbox.org/programming-images/avatars/primosaur-ultimate.png', 'https://www.kasandbox.org/programming-images/avatars/purple-pi-teal.png', 'https://pixabay.com/get/gb8a687d555ef22f4f3fcd920f9cefab6935ee9eb5a6da842537525027deb2464686875b31f8e1943f48d6949a936c0f34d406ae7f25c908d0d3cf5fa65a8c17f2079131715fca79ca908cd593019193e_640.jpg']
+            photos: ['https://picsum.photos/id/338/500.jpg', 'https://picsum.photos/id/334/500.jpg', 'https://picsum.photos/id/349/500.jpg'],
+            height: "5'4",
+            interestedIn: "Everyone",
+            birthdate:"18/07/1994"
         }];
 
     const [userDetails, setUserDetails] = useState(null)
