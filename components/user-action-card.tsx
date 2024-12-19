@@ -1,3 +1,5 @@
+'use client';
+
 import { Cake, ChevronLeft, ChevronRight, CircleArrowUp, Contact, Heart, MapPin, X } from "lucide-react"
 import { Button } from "./ui/button"
 import { CardContent } from "./ui/card"

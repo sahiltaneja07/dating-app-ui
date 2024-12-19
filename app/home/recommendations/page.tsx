@@ -1,4 +1,7 @@
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import UserActionCard from "@/components/user-action-card";
+import UserDetailCard from "@/components/user-detail-card";
 import { getUser } from "@/lib/user-service"
 import { Heart, X } from "lucide-react";
 
@@ -8,12 +11,22 @@ const Recommendations = async () => {
     const data = [{
         userId: 1,
         name: 'XYZ Surname',
+        email: 'xyz.surname@gmail.com',
         location: 'Ostatnia 2D, Krakow',
         age: 30,
-        bio: 'Sare ga ma padha ni sa thus is my bios oiusjdio fkjoikj oikjas jkdfh  kjahk sjdfh kjashdf aksj fhjkshd fkjashdfjkhsjkdfh kj ajsk hs kdjk njksd nfjkas nvjkaf nvjakfd bnkajsdnkj snd',
-        gender: 'M',
+        languagesKnown: ['English', 'Hindi'],
+        jobTitle: 'Software Engineer',
+        drink: 'Yes',
+        smoke: 'No',
+        tags: ['movies', 'cycling', 'sports', 'parties', 'extrovert', 'introvert', 'running', 'book reading'],
+        datingIntention: "Long term",
+        bio: 'Part-time comedian, full-time foodie. I lift (pizza slices), binge-watch shows like its a sport, and never say no to road trips. Looking for someone to share laughs, adventures, and the last slice of pizza.',
+        gender: 'Male',
         interests: ['Walking', 'Badminton', 'Cycling'],
-        photos: ['https://www.kasandbox.org/programming-images/avatars/primosaur-ultimate.png', 'https://placebear.com/g/200/200', 'https://reactnative.dev/img/tiny_logo.png']
+        photos: ['https://picsum.photos/id/447/500.jpg', 'https://picsum.photos/id/453/500.jpg', 'https://picsum.photos/id/669/500.jpg'],
+        height: "5'9",
+        interestedIn: ["Women"],
+        birthdate: "18/07/1992"
     }];
 
     return (
@@ -21,23 +34,18 @@ const Recommendations = async () => {
             {
                 data.map(x =>
                     <div className="flex h-full" key={x.userId}>
-                        <div className="flex-auto w-1/3 border-r">
-                            <div className="w-full rounded-b-lg mb-4 h-80 bg-no-repeat bg-cover bg-center flex flex-col justify-end" style={{backgroundImage: `url(${x.photos[0]}), linear-gradient(#D3D3D3, #808080)`}}>
-                                <div className="font-sans text-sm text-white mb-3 ml-3 mr-3 font-bold">
-                                    <p>Marie 22</p>
-                                    <p>About me oiojsd jhksdh osah i jd ja soidj iosjioa jdaoisjdoias jdio jdfbhddo iajfoajhvd</p>
-                                </div>
-                            </div>
-                            <div className="flex justify-between ml-5 mr-5">
-                                <Button variant={"outline"}>
-                                    <X />
-                                </Button>
-                                <Button variant={"outline"}>
-                                    <Heart />
-                                </Button>
+                        <div className="flex-auto w-1/3">
+                            <div className="flex gap-4 px-6 pt-4 w-full h-full pb-16">
+                                <Card className="flex-auto h-[calc(100vh_-_88px)]">
+                                    <UserActionCard data={x} />
+                                </Card>
                             </div>
                         </div>
-                        <div className="flex-auto w-2/3">right side</div>
+                        <div className="flex-auto w-2/3">
+                            <Card className="flex-auto overflow-y-auto h-[calc(100vh_-_88px)] mt-4 mb-4 mr-6">
+                                <UserDetailCard data={x} />
+                            </Card>
+                        </div>
                     </div >
                 )
             }
