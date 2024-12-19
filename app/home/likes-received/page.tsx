@@ -1,7 +1,8 @@
+import Likes from "@/components/likes"
 
 const LikesReceived = () => {
     return (
-        <div>Likes Received</div>
+        <Likes calledFrom="LikesReceived" />
     )
 }
 
