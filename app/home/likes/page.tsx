@@ -1,13 +1,13 @@
 'use client'
 
+import { Card } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import UserActionCard from "@/components/user-action-card";
+import UserDetailCard from "@/components/user-detail-card";
+import UsersList from "@/components/users-list";
 import { useState } from "react";
-import UsersList from "./users-list"
-import { Card } from "./ui/card";
-import UserActionCard from "./user-action-card";
-import UserDetailCard from "./user-detail-card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-const Likes = ({ calledFrom }: { calledFrom: string }) => {
+const Likes = () => {
     const [userDetails, setUserDetails] = useState(null)
 
     const likesSentUsersList =
@@ -90,42 +90,42 @@ const Likes = ({ calledFrom }: { calledFrom: string }) => {
             birthdate: "18/07/1992"
         }];
 
-    if (calledFrom === 'LikesSent') {
-        // api call for likes sent
-
-    } else if (calledFrom === 'LikesReceived') {
-        // api call for likes received
-    }
-
     function handleCardClick(userData: any) {
         setUserDetails(userData)
+    }
+
+    function onTabChange(value: string) {
+        setUserDetails(null)
+        if (value === 'sent') {
+            // api call for likes sent
+        } else if (value === 'received') {
+            // api call for likes received
+        }
     }
 
     return (
         <div className="flex gap-4 min-h-screen" >
             <div className="w-1/3 border-r">
-                <div className="p-4">
-                    <Tabs defaultValue="sent" className="w-full">
-                        <TabsList className="grid grid-cols-2 bg-gray-200">
-                            <TabsTrigger value="sent">Sent</TabsTrigger>
-                            <TabsTrigger value="received">Received</TabsTrigger>
-                        </TabsList>
-                        <TabsContent value="sent">
-                            <div className="grid grid-cols-3 gap-3 mt-3">
-                                {likesSentUsersList.map((user) => (
-                                    <UsersList key={user.userId} data={user} onCardClick={handleCardClick} />
-                                ))}
-                            </div>
-                        </TabsContent>
-                        <TabsContent value="received">
-                            <div className="grid grid-cols-3 gap-3 mt-3">
-                                {likesReceivedUsersList.map((user) => (
-                                    <UsersList key={user.userId} data={user} onCardClick={handleCardClick} />
-                                ))}
-                            </div>
-                        </TabsContent>
-                    </Tabs>
-                </div>
+                <Tabs defaultValue="sent" className="flex flex-col p-4" onValueChange={onTabChange}>
+                    <TabsList className="grid grid-cols-2 bg-gray-200 w-fit self-center">
+                        <TabsTrigger value="sent">Sent</TabsTrigger>
+                        <TabsTrigger value="received">Received</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="sent">
+                        <div className="grid grid-cols-3 gap-3 mt-3">
+                            {likesSentUsersList.map((user) => (
+                                <UsersList key={user.userId} data={user} onCardClick={handleCardClick} />
+                            ))}
+                        </div>
+                    </TabsContent>
+                    <TabsContent value="received">
+                        <div className="grid grid-cols-3 gap-3 mt-3">
+                            {likesReceivedUsersList.map((user) => (
+                                <UsersList key={user.userId} data={user} onCardClick={handleCardClick} />
+                            ))}
+                        </div>
+                    </TabsContent>
+                </Tabs>
             </div>
 
             <div className="w-2/3">
