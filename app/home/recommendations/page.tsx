@@ -26,7 +26,7 @@ const Recommendations = async () => {
         photos: ['https://picsum.photos/id/447/500.jpg', 'https://picsum.photos/id/453/500.jpg', 'https://picsum.photos/id/669/500.jpg'],
         height: "5'9",
         interestedIn: ["Women"],
-        birthdate: "18/07/1992"
+        dob: "18/07/1992"
     }];
 
     return (

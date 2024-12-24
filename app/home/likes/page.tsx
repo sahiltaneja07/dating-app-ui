@@ -22,7 +22,7 @@ const Likes = () => {
             photos: ['https://picsum.photos/id/447/500.jpg', 'https://picsum.photos/id/453/500.jpg', 'https://picsum.photos/id/669/500.jpg'],
             height: "5'9",
             interestedIn: "Women",
-            birthdate: "18/07/1992"
+            dob: "18/07/1992"
         }, {
             userId: 2,
             name: 'Annie Wer',
@@ -34,7 +34,7 @@ const Likes = () => {
             photos: ['https://picsum.photos/id/64/500.jpg', 'https://picsum.photos/id/325/500.jpg', 'https://picsum.photos/id/550/500.jpg', 'https://picsum.photos/id/646/500.jpg'],
             height: "5'5",
             interestedIn: "Men",
-            birthdate: "17/06/1995"
+            dob: "17/06/1995"
         }, {
             userId: 3,
             name: 'Kevin Lee',
@@ -46,7 +46,7 @@ const Likes = () => {
             photos: ['https://picsum.photos/id/338/500.jpg', 'https://picsum.photos/id/334/500.jpg', 'https://picsum.photos/id/349/500.jpg'],
             height: "5'4",
             interestedIn: "Everyone",
-            birthdate: "18/07/1994"
+            dob: "18/07/1994"
         }];
 
     const likesReceivedUsersList =
@@ -61,7 +61,7 @@ const Likes = () => {
             photos: ['https://picsum.photos/id/64/500.jpg', 'https://picsum.photos/id/325/500.jpg', 'https://picsum.photos/id/550/500.jpg', 'https://picsum.photos/id/646/500.jpg'],
             height: "5'5",
             interestedIn: "Men",
-            birthdate: "17/06/1995"
+            dob: "17/06/1995"
         },
         {
             userId: 3,
@@ -74,7 +74,7 @@ const Likes = () => {
             photos: ['https://picsum.photos/id/338/500.jpg', 'https://picsum.photos/id/334/500.jpg', 'https://picsum.photos/id/349/500.jpg'],
             height: "5'4",
             interestedIn: "Everyone",
-            birthdate: "18/07/1994"
+            dob: "18/07/1994"
         },
         {
             userId: 1,
@@ -87,7 +87,7 @@ const Likes = () => {
             photos: ['https://picsum.photos/id/447/500.jpg', 'https://picsum.photos/id/453/500.jpg', 'https://picsum.photos/id/669/500.jpg'],
             height: "5'9",
             interestedIn: "Women",
-            birthdate: "18/07/1992"
+            dob: "18/07/1992"
         }];
 
     function handleCardClick(userData: any) {

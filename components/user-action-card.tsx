@@ -29,8 +29,8 @@ const UserActionCard = ({ data }: any) => {
             </div>
 
             <div className="flex gap-4 justify-center mt-2">
-                <div className="border-2 p-2 border-red-600 text-red-600 rounded-full"><X /></div>
-                <div className="border-2 p-2 border-pink-500 text-pink-500 rounded-full"><Heart /></div>
+                <div className="border-2 p-2 border-red-600 text-red-600 rounded-full cursor-pointer"><X size={20} /></div>
+                <div className="border-2 p-2 border-pink-500 text-pink-500 rounded-full cursor-pointer"><Heart fill="#ec4899" size={20} /></div>
             </div>
 
             <div className="flex flex-col px-6 py-2 gap-1">
@@ -44,11 +44,7 @@ const UserActionCard = ({ data }: any) => {
                 </div>
 
                 <div className="flex gap-2 items-center">
-                    <Cake size={16} className="text-purple-700" /><span className="text-sm text-zinc-700 flex-1">{data?.birthdate}</span>
-                </div>
-
-                <div className="flex gap-2">
-                    <Contact size={16} className="text-purple-700" /><span className="text-sm text-zinc-700  flex-1">{data?.bio}</span>
+                    <Cake size={16} className="text-purple-700" /><span className="text-sm text-zinc-700 flex-1">{data?.dob}</span>
                 </div>
             </div>
         </CardContent>
