@@ -1,5 +1,7 @@
 {
-    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "editor.detectIndentation": false,
     "editor.tabSize": 4,
-    "editor.detectIndentation": false
+    "prettier.tabWidth": 4,
+    "prettier.singleQuote": true,
+    
 }

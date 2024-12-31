@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useForm } from "@tanstack/react-form";
+import { useSendOtpQuery } from "@/hooks/use-user";
 
 const Login = () => {
     const form = useForm({
@@ -13,13 +14,18 @@ const Login = () => {
             email: ""
         },
         onSubmit: ({ value }) => {
-            if (!value) return
-            console.log(value)
-            router.push('login/otp')
+            if (!value) return;
         }
     });
-
     const router = useRouter();
+    const {
+        data,
+        error,
+        status,
+    } = useSendOtpQuery(form.getFieldValue('email'))
+    if (data?.status === 'success') {
+        router.push(`login/otp?email=${form.getFieldValue('email')}`);
+    }
 
     return (
         <div className="flex justify-center h-screen">

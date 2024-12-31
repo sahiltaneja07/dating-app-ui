@@ -5,7 +5,7 @@ export function getUrl(endpoint: string, params?: Record<string, string>): strin
         ...params
     })
     let url = `${API_CONFIG.BASE_URL}/${endpoint}`
-    if (searchParams) {
+    if (params) {
         url += `?${searchParams.toString()}`
     }
     return url;

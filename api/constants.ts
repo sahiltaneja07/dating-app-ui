@@ -1,4 +1,4 @@
 export const APP_CONSTANTS = {
-    sendOtp: "",
-    login: ""
-}
+    sendOtp: 'auth/otp',
+    login: 'auth',
+};

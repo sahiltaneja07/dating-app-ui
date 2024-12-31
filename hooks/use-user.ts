@@ -14,10 +14,10 @@ export const useSendOtpQuery = (email: string) => {
     })
 }
 
-export const useLoginQuery = (otp: string) => {
+export const useLoginQuery = (otp: string, email: string | null) => {
     return useQuery({
         queryKey: USER_KEYS.login(otp),
-        queryFn: () => otp ? loginApi(otp) : null,
+        queryFn: () => (otp && email) ? loginApi(otp, email) : null,
         enabled: !!otp
     })
 }

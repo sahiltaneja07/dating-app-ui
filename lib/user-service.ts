@@ -2,17 +2,17 @@
 
 import { cookies } from "next/headers";
 
-export async function getUser(): Promise<any> {
+export async function getAuthToken(): Promise<any> {
     const cookieStore = await cookies();
-    return cookieStore.get('user');
+    return cookieStore.get('authToken');
 }
 
-export async function setUser(user: any): Promise<void> {
+export async function setAuthToken(user: any): Promise<void> {
     const cookieStore = await cookies();
-    cookieStore.set('user', JSON.stringify(user));
+    cookieStore.set('authToken', JSON.stringify(user));
 }
 
-export async function deleteUser(): Promise<void> {
+export async function deleteAuthToken(): Promise<void> {
     const cookieStore = await cookies();
-    cookieStore.delete('user');
+    cookieStore.delete('authToken');
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
@@ -11,33 +11,30 @@ import {
     InputOTPSlot,
 } from "@/components/ui/input-otp"
 import { useForm } from '@tanstack/react-form';
+import { useLoginQuery } from '@/hooks/use-user';
+import { setAuthToken } from '@/lib/user-service';
 
 const LoginOTP = () => {
+    const router = useRouter();
+    const searchParams = useSearchParams();
     const form = useForm({
         defaultValues: {
             otp: ""
-        },
-        onSubmit: ({ value }) => {
-            console.log(value)
-            // router.push('login/otp')
         }
     });
+    const email = searchParams.get('email');
+    const {
+        data,
+        error,
+        status,
+    } = useLoginQuery(form.getFieldValue('otp'), email);
+    if (data?.status === 'success') {
+        setAuthToken(data.data.user.authToken);
+        router.push('/home/recommendations');
+    }
 
-    // const router = useRouter();
-
-    function handleClick() {
-
-        // const response = await fetch('/api/auth/login', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({ email, password }),
-        // })
-
-        // if (response.ok) {
-        //     router.push('/recommendations')
-        // } else {
-        //     // Handle errors
-        // }
+    function onBack() {
+        router.replace('/user/login');
     }
 
     return (
@@ -89,6 +86,9 @@ const LoginOTP = () => {
                     </form>
 
                 </CardContent>
+                <CardFooter className="flex justify-start">
+                    <Button onClick={onBack}>Back</Button>
+                </CardFooter>
                 <CardFooter className="flex justify-end">
                     <Button onClick={form.handleSubmit}>Login</Button>
                 </CardFooter>
