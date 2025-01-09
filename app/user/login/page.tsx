@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useForm } from "@tanstack/react-form";
-import { useSendOtpQuery } from "@/hooks/use-user";
+import { useSendOtpQuery } from "@/hooks/use-auth";
 
 const Login = () => {
     const form = useForm({

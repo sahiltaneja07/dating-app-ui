@@ -1,39 +1,40 @@
-import { Button } from "@/components/ui/button";
+'use client'
+
 import { Card } from "@/components/ui/card";
 import UserActionCard from "@/components/user-action-card";
 import UserDetailCard from "@/components/user-detail-card";
-import { getUser } from "@/lib/user-service"
-import { Heart, X } from "lucide-react";
+import { useRecommendationQuery } from "@/hooks/use-user";
 
-const Recommendations = async () => {
-    // const user = await getUser();
+const Recommendations = () => {
 
-    const data = [{
-        userId: 1,
-        name: 'XYZ Surname',
-        email: 'xyz.surname@gmail.com',
-        location: 'Ostatnia 2D, Krakow',
-        age: 30,
-        languagesKnown: ['English', 'Hindi'],
-        jobTitle: 'Software Engineer',
-        drink: 'Yes',
-        smoke: 'No',
-        tags: ['movies', 'cycling', 'sports', 'parties', 'extrovert', 'introvert', 'running', 'book reading'],
-        datingIntention: "Long term",
-        bio: 'Part-time comedian, full-time foodie. I lift (pizza slices), binge-watch shows like its a sport, and never say no to road trips. Looking for someone to share laughs, adventures, and the last slice of pizza.',
-        gender: 'Male',
-        interests: ['Walking', 'Badminton', 'Cycling'],
-        photos: ['https://picsum.photos/id/447/500.jpg', 'https://picsum.photos/id/453/500.jpg', 'https://picsum.photos/id/669/500.jpg'],
-        height: "5'9",
-        interestedIn: ["Women"],
-        dob: "18/07/1992"
-    }];
+    const {data, error} = useRecommendationQuery();
+    console.log(data, error);
+    // const data = [{
+    //     userId: 1,
+    //     name: 'XYZ Surname',
+    //     email: 'xyz.surname@gmail.com',
+    //     location: 'Ostatnia 2D, Krakow',
+    //     age: 30,
+    //     languagesKnown: ['English', 'Hindi'],
+    //     jobTitle: 'Software Engineer',
+    //     drink: 'Yes',
+    //     smoke: 'No',
+    //     tags: ['movies', 'cycling', 'sports', 'parties', 'extrovert', 'introvert', 'running', 'book reading'],
+    //     datingIntention: "Long term",
+    //     bio: 'Part-time comedian, full-time foodie. I lift (pizza slices), binge-watch shows like its a sport, and never say no to road trips. Looking for someone to share laughs, adventures, and the last slice of pizza.',
+    //     gender: 'Male',
+    //     interests: ['Walking', 'Badminton', 'Cycling'],
+    //     photos: ['https://picsum.photos/id/447/500.jpg', 'https://picsum.photos/id/453/500.jpg', 'https://picsum.photos/id/669/500.jpg'],
+    //     height: "5'9",
+    //     interestedIn: ["Women"],
+    //     dob: "18/07/1992"
+    // }];
 
     return (
         <>
             {
-                data.map(x =>
-                    <div className="flex h-full" key={x.userId}>
+                data?.data?.users?.map((x: any) =>
+                    <div className="flex h-full" key={x._id}>
                         <div className="flex-auto w-1/3">
                             <div className="flex gap-4 px-6 pt-4 w-full h-full pb-16">
                                 <Card className="flex-auto h-[calc(100vh_-_88px)]">

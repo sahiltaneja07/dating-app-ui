@@ -11,7 +11,7 @@ import {
     InputOTPSlot,
 } from "@/components/ui/input-otp"
 import { useForm } from '@tanstack/react-form';
-import { useLoginQuery } from '@/hooks/use-user';
+import { useLoginQuery } from '@/hooks/use-auth';
 import { useBaseContext } from '@/contexts/base.context';
 
 const LoginOTP = () => {
@@ -23,7 +23,7 @@ const LoginOTP = () => {
         }
     });
     const email = searchParams.get('email');
-    const {setUser, setOnboarding} = useBaseContext();
+    const {setUser, setIsOnboardingCompleted} = useBaseContext();
     const {
         data,
         error,
@@ -31,7 +31,7 @@ const LoginOTP = () => {
     } = useLoginQuery(form.getFieldValue('otp'), email);
     if (data?.status === 'success') {
         setUser(data?.data?.user);
-        setOnboarding(true); 
+        setIsOnboardingCompleted(data?.data?.user.isOnboardingCompleted); 
         router.push('/home/recommendations');
     }
 

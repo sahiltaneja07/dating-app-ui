@@ -5,18 +5,18 @@ import {createContext, useContext, useState } from 'react';
 type ContextType = {
     user: any;
     setUser: (user: any) => void;
-    onboarding: boolean;
-    setOnboarding: (onboarding: boolean) => void;
+    isOnboardingCompleted: boolean;
+    setIsOnboardingCompleted: (onboarding: boolean) => void;
 };
 
 const BaseContext = createContext<ContextType | undefined>(undefined)
 
 const BaseProvider = ({children}: {children: any}) => {
     const [user, setUser] = useState<ContextType['user']>(undefined);
-    const [onboarding, setOnboarding] = useState<ContextType['onboarding']>(false);
+    const [isOnboardingCompleted, setIsOnboardingCompleted] = useState<ContextType['isOnboardingCompleted']>(false);
 
     return(
-        <BaseContext.Provider value={{user, setUser, onboarding, setOnboarding}}>
+        <BaseContext.Provider value={{user, setUser, isOnboardingCompleted, setIsOnboardingCompleted}}>
             {children}
         </BaseContext.Provider>
     )
