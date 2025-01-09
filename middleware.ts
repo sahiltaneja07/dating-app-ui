@@ -1,14 +1,18 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { getAuthToken } from './lib/user-service';
 
 export function middleware(request: NextRequest) {
-    const authToken = getAuthToken();
-    if (!authToken) {
-        return NextResponse.redirect(new URL('/user/login', request.url));
-    }   
-}
+    const accessToken = request.cookies.get('accessToken');
 
-export const config = {
-    matcher: '/home/:path*',
-};
+    if (request.nextUrl.pathname.startsWith('/home')) {
+        if (!accessToken) {
+            return NextResponse.redirect(new URL('/user/login', request.url));
+        }
+    }
+
+    if (request.nextUrl.pathname.startsWith('/user')) {
+        if (accessToken) {
+            return NextResponse.redirect(new URL('/home/recommendations', request.url));
+        }
+    }
+}

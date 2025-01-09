@@ -12,7 +12,12 @@ export function getUrl(endpoint: string, params?: Record<string, string>): strin
 }
 
 export async function getApi<T>(url: string): Promise<T> {
-    const respose = await fetch(url)
+    const requestOptions: RequestInit = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include'
+    };
+    const respose = await fetch(url, requestOptions)
     if (!respose.ok) {
         throw new Error(respose.statusText)
     }
@@ -20,10 +25,11 @@ export async function getApi<T>(url: string): Promise<T> {
 }
 
 export async function postApi<T>(url: string, data: any): Promise<T> {
-    const requestOptions = {
+    const requestOptions: RequestInit = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        credentials: 'include'
     };
 
     const response = await fetch(url, requestOptions)

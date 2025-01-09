@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/input-otp"
 import { useForm } from '@tanstack/react-form';
 import { useLoginQuery } from '@/hooks/use-user';
-import { setAuthToken } from '@/lib/user-service';
+import { useBaseContext } from '@/contexts/base.context';
 
 const LoginOTP = () => {
     const router = useRouter();
@@ -23,13 +23,15 @@ const LoginOTP = () => {
         }
     });
     const email = searchParams.get('email');
+    const {setUser, setOnboarding} = useBaseContext();
     const {
         data,
         error,
         status,
     } = useLoginQuery(form.getFieldValue('otp'), email);
     if (data?.status === 'success') {
-        setAuthToken(data.data.user.authToken);
+        setUser(data?.data?.user);
+        setOnboarding(true); 
         router.push('/home/recommendations');
     }
 
