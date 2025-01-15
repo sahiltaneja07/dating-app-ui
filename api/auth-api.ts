@@ -15,3 +15,8 @@ export async function loginApi(otp: string, email: string): Promise<any> {
         email
     });
 }
+
+// export async function useRefreshTokenApi(): Promise<any> {
+//     const url = getUrl(APP_CONSTANTS.refreshToken);
+//     return postApi(url, {});
+// }

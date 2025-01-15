@@ -8,7 +8,7 @@ import { useRecommendationQuery } from "@/hooks/use-user";
 const Recommendations = () => {
 
     const {data, error} = useRecommendationQuery();
-    console.log(data, error);
+    // console.log(data, error);
     // const data = [{
     //     userId: 1,
     //     name: 'XYZ Surname',
@@ -33,7 +33,7 @@ const Recommendations = () => {
     return (
         <>
             {
-                data?.data?.users?.map((x: any) =>
+                data?.data.users?.map((x: any) =>
                     <div className="flex h-full" key={x._id}>
                         <div className="flex-auto w-1/3">
                             <div className="flex gap-4 px-6 pt-4 w-full h-full pb-16">

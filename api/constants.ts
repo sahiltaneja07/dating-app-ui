@@ -1,5 +1,6 @@
 export const APP_CONSTANTS = {
     sendOtp: 'auth/otp',
     login: 'auth',
-    recommendation: 'recommendation/users'
+    recommendation: 'recommendation/users',
+    refreshToken: 'auth/refresh/token'
 };

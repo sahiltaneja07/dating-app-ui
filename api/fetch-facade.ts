@@ -1,56 +1,33 @@
-import { API_CONFIG } from "./config"
+import axios from 'axios';
+import { API_CONFIG } from './config';
 
-export function getUrl(endpoint: string, params?: Record<string, string>): string {
+export function getUrl(
+    endpoint: string,
+    params?: Record<string, string>
+): string {
     const searchParams = new URLSearchParams({
-        ...params
-    })
-    let url = `${API_CONFIG.BASE_URL}/${endpoint}`
+        ...params,
+    });
+    let url = `${API_CONFIG.BASE_URL}/${endpoint}`;
     if (params) {
-        url += `?${searchParams.toString()}`
+        url += `?${searchParams.toString()}`;
     }
     return url;
 }
 
 export async function getApi<T>(url: string): Promise<T> {
-    const requestOptions: RequestInit = {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include'
-    };
-    const respose = await fetch(url, requestOptions)
-    if (!respose.ok) {
-        throw new Error(respose.statusText)
-    }
-    return respose.json()
+    const result = await axios.get(url, { withCredentials: true });
+    return result.data;
 }
 
 export async function postApi<T>(url: string, data: any): Promise<T> {
-    const requestOptions: RequestInit = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-        credentials: 'include'
-    };
-
-    const response = await fetch(url, requestOptions)
-    if (!response.ok) {
-        throw new Error(response.statusText)
-    }
-    return response.json()
+    const result = await axios.post(url, data, { withCredentials: true });
+    return result.data;
 }
 
 export async function putApi<T>(url: string, data: any): Promise<T> {
-    const requestOptions = {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-    };
-
-    const response = await fetch(url, requestOptions)
-    if (!response.ok) {
-        throw new Error(response.statusText)
-    }
-    return response.json()
+    const result = await axios.put(url, data, { withCredentials: true });
+    return result.data;
 }
 
 // export async function deleteApi<T>(url: string): Promise<T> {

@@ -27,11 +27,10 @@ const LoginOTP = () => {
     const {
         data,
         error,
-        status,
     } = useLoginQuery(form.getFieldValue('otp'), email);
     if (data?.status === 'success') {
-        setUser(data?.data?.user);
-        setIsOnboardingCompleted(data?.data?.user.isOnboardingCompleted); 
+        setUser(data?.data.user);
+        setIsOnboardingCompleted(data?.data.user.isOnboardingCompleted); 
         router.push('/home/recommendations');
     }
 
