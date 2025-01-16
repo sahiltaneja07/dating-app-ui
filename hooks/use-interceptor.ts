@@ -5,11 +5,16 @@ import { useEffect } from 'react';
 import { useBaseContext } from '@/contexts/base.context';
 import { getUrl, postApi } from '@/api/fetch-facade';
 import { APP_CONSTANTS } from '@/api/constants';
-// import { useRouter } from 'next/router';
+
+const fetchRefreshToken = async () => {
+    const { setUser } = useBaseContext();
+
+    const url = getUrl(APP_CONSTANTS.refreshToken);
+    const { data }: any = await postApi(url, {});
+    setUser(data.user);
+}
 
 const useInterceptor = () => {
-    const { setUser } = useBaseContext();
-    // const router = useRouter();
 
     useEffect(() => {
         const responseInterceptor = axios.interceptors.response.use(
@@ -20,16 +25,15 @@ const useInterceptor = () => {
                     error.response.status === 401 &&
                     error.response.data.message === 'RefreshToken Expired'
                 ) {
-                    // router.replace('/user/login');
+                    // navigate to /user/login
+                    //throw error, catch it in global error handling and handle route
                 } else if (
                     error.response.status === 401 &&
                     error.response.data.message === 'AccessToken Expired' &&
                     !prevRequest.sent
                 ) {
                     prevRequest.sent = true;
-                    const url = getUrl(APP_CONSTANTS.refreshToken);
-                    const { data }: any = await postApi(url, {});
-                    setUser(data.user);
+                    await fetchRefreshToken();
                     return axios(prevRequest);
                 }
                 return Promise.reject(error);
